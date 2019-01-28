@@ -57,46 +57,20 @@
       
         <p><strong>1.栈(后进先出)方法：push()和pop()</strong><br>push()方法可以接收任意的参数，把他们逐个添加到数组的末尾，并返回修改后数组的长度；<br>pop()方法则是从数组末尾移除最后一项，减少数组的length值，然后返回移；<br>push()和pop()方法都是数组默认的方法；</p>
 <a id="more"></a>
-<blockquote>
-<p>var colors = new Array();    //创建了一个数组<br>var count = colors.push(“red”,”green”);    //推入两项<br>alert(count);    //2    </p>
-<p>count = colors.push(“black”); // 推入另一项<br>alert(count); //3 </p>
-<p>var item = colors.pop(); // 取得最后一项<br>alert(item); //“black”<br>alert(colors.length); //2 </p>
-</blockquote>
-<p><strong>2.队列(先进先出)方法：shift()和unshift()</strong><br>shift()方法可以将数组中的第一项进行移除，并且返回该项，数组长度减1；<br>unshift()方法可以在数组的前端添加任意个项并返回新数组的长度；</p>
-<blockquote>
-<p>var colors = new Array();    //创建了一个数组<br>var count = colors.push(“red”,”green”);        //推入两项<br>alert(count);    //2</p>
-<p>count = colors.push(“black”);    //推入一项<br>alert(count);    //3</p>
-<p>var items = colors.shift();        //取得第一项(数组的首项)<br>alert(item);    //“red”<br>alert(colors.length);        //2</p>
-</blockquote>
-<p>同时使用unshift()与pop()方法可以从相反的方向来模拟队列，即在数组的前端添加项，在数组的末尾移除项</p>
-<blockquote>
-<p>var colors = new Array(); //创建一个数组<br>var count = colors.unshift(“red”, “green”); //在数组的前端推入两项<br>alert(count); //2</p>
-<p>count = colors.unshift(“black”); //在数组前端推入另一项<br>alert(count); //3 </p>
-<p>var item = colors.pop(); //取得最后一项，并同时移除了最后一项<br>alert(item); //“green”<br>alert(colors.length); //2 </p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var colors = new Array();	//创建了一个数组</span><br><span class="line">var count = colors.push(&quot;red&quot;,&quot;green&quot;);	//推入两项</span><br><span class="line">alert(count);	//2	</span><br><span class="line"></span><br><span class="line">count = colors.push(&quot;black&quot;); // 推入另一项</span><br><span class="line">alert(count); //3 </span><br><span class="line"></span><br><span class="line">var item = colors.pop(); // 取得最后一项</span><br><span class="line">alert(item); //&quot;black&quot; </span><br><span class="line">alert(colors.length); //2</span><br></pre></td></tr></table></figure>
+<p><strong>2.队列(先进先出)方法：shift()和unshift()</strong><br>shift()方法可以将数组中的第一项进行移除，并且返回该项，数组长度减1；<br>unshift()方法可以在数组的前端添加任意个项并返回新数组的长度；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var colors = new Array();	//创建了一个数组</span><br><span class="line">var count = colors.push(&quot;red&quot;,&quot;green&quot;);		//推入两项</span><br><span class="line">alert(count);	//2</span><br><span class="line"></span><br><span class="line">count = colors.push(&quot;black&quot;);	//推入一项</span><br><span class="line">alert(count);	//3</span><br><span class="line"></span><br><span class="line">var items = colors.shift();		//取得第一项(数组的首项)</span><br><span class="line">alert(item);	//&quot;red&quot;</span><br><span class="line">alert(colors.length);		//2</span><br></pre></td></tr></table></figure></p>
+<p>同时使用unshift()与pop()方法可以从相反的方向来模拟队列，即在数组的前端添加项，在数组的末尾移除项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var colors = new Array(); //创建一个数组</span><br><span class="line">var count = colors.unshift(&quot;red&quot;, &quot;green&quot;); //在数组的前端推入两项</span><br><span class="line">alert(count); //2</span><br><span class="line"></span><br><span class="line">count = colors.unshift(&quot;black&quot;); //在数组前端推入另一项</span><br><span class="line">alert(count); //3 </span><br><span class="line"></span><br><span class="line">var item = colors.pop(); //取得最后一项，并同时移除了最后一项</span><br><span class="line">alert(item); //&quot;green&quot; </span><br><span class="line">alert(colors.length); //2</span><br></pre></td></tr></table></figure></p>
 <p><strong>小结：</strong><br>shift与unshift的作用正好相反<br>栈方法总是对数组的最后端进行操作，push()从结尾进行添加，pop将结尾项进行移除<br>队列方法总是对数组的开始位置进行操作，shift()将起始位进行移除，unshift()从起始位进行添加</p>
-<p><strong>3.重排序的方法：reverse()和sort()</strong><br>数组中存在两个可以直接用来排序的方法：reverse()和sort();<br>reverse()方法是将数组的顺序进行反转,案例如下</p>
-<blockquote>
-<p>var values = [1, 2, 3, 4, 5];<br>values.reverse();<br>alert(values); //5,4,3,2,1 </p>
-</blockquote>
-<p>sort()方法是将数组里面的元素转化为string类型再进行排序，即使是number类型也会先转化为string类型,请看下面案例</p>
-<blockquote>
-<p>var values = [0, 1, 5, 10, 15];<br>values.sort();<br>alert(values); //0,1,10,15,5 </p>
-</blockquote>
+<p><strong>3.重排序的方法：reverse()和sort()</strong><br>数组中存在两个可以直接用来排序的方法：reverse()和sort();<br>reverse()方法是将数组的顺序进行反转,案例如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var values = [1, 2, 3, 4, 5]; </span><br><span class="line">values.reverse(); </span><br><span class="line">alert(values); //5,4,3,2,1</span><br></pre></td></tr></table></figure></p>
+<p>sort()方法是将数组里面的元素转化为string类型再进行排序，即使是number类型也会先转化为string类型,请看下面案例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var values = [0, 1, 5, 10, 15]; </span><br><span class="line">values.sort(); </span><br><span class="line">alert(values); //0,1,10,15,5</span><br></pre></td></tr></table></figure></p>
 <p>原来的数组，本身就是按升序进行排列，排序后改变了原来正确的排列顺序。原因在于：使用sort()函数的时候是通过将数组的每一项转化为string类型来进行比较的，因为数值 5 虽然小于 10，但在进行字符串比较时，”10”则位于”5”的前面，于是数组的顺序就被修改了。</p>
-<p>正确的使用方式是我们可以定义一个简单的比较函数如：</p>
-<blockquote>
-<p>function compare(value1, value2) {<br>if (value1 &lt; value2) {<br>return -1;<br>} else if (value1 &gt; value2) {<br>return 1;<br>} else {<br>return 0;<br>}<br>} </p>
-</blockquote>
-<p>这个比较函数可以适用于大多数数据类型，只要将其作为参数传递给 sort()方法即可，如下面这<br>个例子所示。</p>
-<blockquote>
-<p>var values = [0, 1, 5, 10, 15];<br>values.sort(compare);<br>alert(values); //0,1,5,10,15 </p>
-</blockquote>
+<p>正确的使用方式是我们可以定义一个简单的比较函数如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function compare(value1, value2) &#123; </span><br><span class="line">	if (value1 &lt; value2) &#123; </span><br><span class="line">		return -1; </span><br><span class="line">	&#125; else if (value1 &gt; value2) &#123; </span><br><span class="line">		return 1; </span><br><span class="line">	&#125; else &#123; </span><br><span class="line">		return 0; </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个比较函数可以适用于大多数数据类型，只要将其作为参数传递给 sort()方法即可，如下面这<br>个例子所示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var values = [0, 1, 5, 10, 15]; </span><br><span class="line">values.sort(compare);</span><br><span class="line">alert(values); //0,1,5,10,15</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/28/javascript-1/" data-id="cjrfptnz500036cucl04ppl2z" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/01/28/javascript-1/" data-id="cjrgh36lw00029suczdcbkowm" class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Array/">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaScript/">javaScript</a></li></ul>
 
