@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="代码控 | 爱生活 | 爱摄影">
+  
+  
+    <meta name="description" content="程序猿|爱生活|爱摄影">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    针对字符串的操作方法 |
+    
+    白瑞德</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-javascript-3" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      针对字符串的操作方法
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/01/31/javascript-3/" class="article-date">
+  <time datetime="2019-01-31T03:08:25.000Z" itemprop="datePublished">2019-01-31</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <p>javaScript中String类型数据存在有多种用来操作字符串的方法，平时的使用过程中也会使用非常频繁，是非常重要的部分。<br>包括将字符串拆分成字符，字符串的拼接截取，字符串的查找以及字符串大小写形式的转化等；<br><a id="more"></a></p>
+<h2 id="1-字符方法"><a href="#1-字符方法" class="headerlink" title="1.字符方法"></a>1.字符方法</h2><p>用于访问字符串中特定字符的方法：charAt()和charCodeAt().这两个方法都接收一个参数，即基于0的字符位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;hello world&quot;;</span><br><span class="line">alert(stringValue.charAt(1));		//&quot;e&quot;</span><br></pre></td></tr></table></figure></p>
+<p>如果你想得到是字符编码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;hello world&quot;;</span><br><span class="line">alert(stringValue.charCodeAt(1));		//输出&quot;101&quot;</span><br></pre></td></tr></table></figure></p>
+<p>另外在ECMAScript5中定义了另一个访问个别字符的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;hello world&quot;;</span><br><span class="line">alert(stringValue[1]);		//&quot;e&quot;(在某些浏览器版本中可能不尽相同)</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-字符串方法"><a href="#2-字符串方法" class="headerlink" title="2.字符串方法"></a>2.字符串方法</h2><p>前面学习Array数组类型的数据存在slice()方法，这里先与String类型的slice()方法作一下对比：</p>
+<h3 id="①slice-方法"><a href="#①slice-方法" class="headerlink" title="①slice()方法"></a>①slice()方法</h3><h3 id="String类型的slice-方法与Array类型slice-方法对比"><a href="#String类型的slice-方法与Array类型slice-方法对比" class="headerlink" title="String类型的slice()方法与Array类型slice()方法对比"></a>String类型的slice()方法与Array类型slice()方法对比</h3><p>String类型slice()方法：<br>该方法会返回一个原字符串的一个子字符串，该函数接受一个或者两个参数，指定字符串开始的位置和结束的位置(都是基于0开始的),并且不包括结束位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> let a = &quot;hello world&quot;;</span><br><span class="line"> let sl = a.slice(2);	//截取下标为2以后的位置</span><br><span class="line"> console.log(sl);    //llo world</span><br><span class="line"> </span><br><span class="line"> let sl2 = a.slice(1,2);	//截取下标1到下标2的位置，包前不包后</span><br><span class="line"> console.log(sl2);   //e</span><br><span class="line"> </span><br><span class="line">//如果为负数的情况</span><br><span class="line"> let sl3 = a.slice(-2);		//截取-2位置至末尾（这里的倒数的下标不是从0开始的请注意）</span><br><span class="line"> console.log(sl3); 		//ld</span><br><span class="line"> </span><br><span class="line"> let sl4 = a.slice(-2,0);	//并不能正确的截取到</span><br><span class="line"> console.log(sl4);       //空</span><br><span class="line"> </span><br><span class="line"> let sl5 = a.slice(-2,-1);	//并不能正确的截取到</span><br><span class="line"> console.log(sl5);       //l</span><br></pre></td></tr></table></figure></p>
+<p>我们再来看看Array类型的slice()方法：<br>基于当前数组中的一个或者多个项创建一个新数组。slice()方法可以接受一或两个参数，即要返回项的起始和结束为位置；<br>一个参数的情况：slice()方法返回从该参数指定位置开始到当前数组末尾的所有项。<br>两个参数的情况：slice()返回起始和结束位置之间的项-但不包括结束位置的项。<br>参数其实就是数组中项对应的下标，如果传入的是负数那么则可以按照加上数组的长度的方式继续转化，也可以理解为从数组的末尾进行倒数定位；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var colors = [&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;,&quot;yellow&quot;,&quot;purple&quot;];</span><br><span class="line">var colors2 = colors.slice(1);</span><br><span class="line">var colors3 = colors.slice(1,4);</span><br><span class="line"></span><br><span class="line">alert(colors2);		//green,blue,yellow,purple</span><br><span class="line">alert(colors3);		//green,bule,yellow</span><br><span class="line"></span><br><span class="line">//负数的形式</span><br><span class="line">var colors = [&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;,&quot;yellow&quot;,&quot;purple&quot;];</span><br><span class="line">var colors2 = colors.slice(-1);</span><br><span class="line">var colors3 = colors.slice(-2,-1);</span><br><span class="line">console.log(colors2);       //purple</span><br><span class="line">console.log(colors3);       //yellow</span><br></pre></td></tr></table></figure></p>
+<p><strong>总结：</strong>总的来说，两者的用法几乎是一样的，只不过一个是用在数组上，一个是用在字符串上，字符串也可以用来对比数组进行使用。</p>
+<h3 id="②concat-方法"><a href="#②concat-方法" class="headerlink" title="②concat()方法"></a>②concat()方法</h3><p>用于字符串的拼接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;hello &quot;; </span><br><span class="line">var result = stringValue.concat(&quot;world&quot;); </span><br><span class="line">alert(result); 		//&quot;hello world&quot; </span><br><span class="line">alert(stringValue); 		//&quot;hello&quot; 原字符串不受影响</span><br></pre></td></tr></table></figure></p>
+<p><strong>concat()方法可以接受任意多个参数</strong>，也就是说可以通过它拼接任意多个字符串。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;hello &quot;; </span><br><span class="line">var result = stringValue.concat(&quot;world&quot;, &quot;!&quot;);</span><br><span class="line">alert(result); 		//&quot;hello world!&quot; </span><br><span class="line">alert(stringValue); 		//&quot;hello&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="③substr-和substring"><a href="#③substr-和substring" class="headerlink" title="③substr()和substring()"></a>③substr()和substring()</h3><p>ECMAScript还提供了三个基于子字符串创建新字符串的方法：<strong>slice()</strong>、<strong>substr()</strong>和 <strong>substring()</strong>,在上面我们已经介绍了slice()，在这里我们将这三个函数再次进行对比。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;hello world&quot;; </span><br><span class="line">alert(stringValue.slice(3)); 		//&quot;lo world&quot; </span><br><span class="line">alert(stringValue.substring(3)); 		//&quot;lo world&quot; </span><br><span class="line">alert(stringValue.substr(3)); 		//&quot;lo world&quot; </span><br><span class="line">alert(stringValue.slice(3, 7)); 		//&quot;lo w&quot; </span><br><span class="line">alert(stringValue.substring(3,7)); 		//&quot;lo w&quot; </span><br><span class="line">alert(stringValue.substr(3, 7)); 		//&quot;lo worl&quot;</span><br></pre></td></tr></table></figure></p>
+<p>三者都是接受一个或者两个参数，slice()与substring()：<strong>都是传入起始位置、结束位置</strong>，substr()：<strong>接收起始位置、和指定要返回的字符个数</strong>。<br>当参数其中存在负数的时候，函数将会有不同的行为反应：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;hello world&quot;; </span><br><span class="line">alert(stringValue.slice(-3)); 		//&quot;rld&quot; </span><br><span class="line">alert(stringValue.substring(-3)); 		//&quot;hello world&quot; </span><br><span class="line">alert(stringValue.substr(-3)); 		//&quot;rld&quot; </span><br><span class="line">alert(stringValue.slice(3, -4)); 		//&quot;lo w&quot; </span><br><span class="line">alert(stringValue.substring(3, -4)); 		//&quot;hel&quot; </span><br><span class="line">alert(stringValue.substr(3, -4)); 		//&quot;&quot;（空字符串）</span><br></pre></td></tr></table></figure></p>
+<p><strong>slice()：当参数为负数的时候将参数加上字符串长度，再进行返回</strong><br><strong>substring()：当参数为负的时候，会将所有的负数参数转化为0</strong><br><strong>substr()：将负的第一个参数加上字符串的长度，而将负的第二个参数转换为 0。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alert(stringValue.substring(3, -4)); 		//&quot;hel&quot; </span><br><span class="line">//转化为</span><br><span class="line">alert(stringValue.substring(3, 0)); 		//同样返回&quot;hel&quot;</span><br><span class="line">alert(stringValue.substring(0, 3)); 		//&quot;hel&quot;</span><br></pre></td></tr></table></figure></p>
+<p>W3C与菜鸟教程上面的说法与实际的操作并不相同，使用负数参数并不会出现报错；<br><img src="/2019/01/31/javascript-3/QQ截图20190131160101.png" alt="substring"><br><strong><em>所以作为负数的入参形式虽然可行，可能并不建议这样的使用方式，容易造成混淆，需要注意。</em></strong></p>
+<h2 id="3-字符串位置方法"><a href="#3-字符串位置方法" class="headerlink" title="3.字符串位置方法"></a>3.字符串位置方法</h2><p>两个查找字符串的方法indexOf()、lastIndexOf();<br>这两个方法都是从一个字符串中搜索给定的子字符串，然后返子字符串的位置（如果没有找到该子字符串，则返回-1）。<br><strong>这两个方法的区别在于：</strong>indexOf()方法从字符串的开头向后搜索子字符串，而 lastIndexOf()方法是从字符串的末尾向前搜索子字符串。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;hello world&quot;; </span><br><span class="line">alert(stringValue.indexOf(&quot;o&quot;)); 		//4 </span><br><span class="line">alert(stringValue.lastIndexOf(&quot;o&quot;)); 		//7</span><br></pre></td></tr></table></figure></p>
+<p>这两个方法都可以接收可选的第二个参数，表示从字符串中的哪个位置开始搜索。换句话说，indexOf()会从该参数指定的位置向后搜索，忽略该位置之前的所有字符；而 lastIndexOf()则会从<br>指定的位置向前搜索，忽略该位置之后的所有字符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;hello world&quot;; </span><br><span class="line">alert(stringValue.indexOf(&quot;o&quot;, 6)); 		//7 </span><br><span class="line">alert(stringValue.lastIndexOf(&quot;o&quot;, 6)); 		//4</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-trim-方法"><a href="#3-trim-方法" class="headerlink" title="3.trim()方法"></a>3.trim()方法</h2><p>所有的字符串都具有trim()方法，这个方法会创建一个字符串的副本，删除前置及后缀的所有空格，然后返回结果;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot; hello world &quot;; </span><br><span class="line">var trimmedStringValue = stringValue.trim(); </span><br><span class="line">alert(stringValue); //&quot; hello world &quot; </span><br><span class="line">alert(trimmedStringValue); //&quot;hello world&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-字符串大小写转换"><a href="#4-字符串大小写转换" class="headerlink" title="4.字符串大小写转换"></a>4.字符串大小写转换</h2><p>ECMAScript 中涉及字符串大小写转换的方<br>法有 4 个：toLowerCase()、toLocaleLowerCase()、toUpperCase()和 toLocaleUpperCase()。<br>经常使用的要数toLowerCase()和toUpperCase(),转化成小写形式和大写形式。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/31/javascript-3/" data-id="cjrk1kpf20005m8uc31sv4qe3" class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/String/">String</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/01/29/javascript-2/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">javaScript中Array类型的方法（二）</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2019 白瑞德</li>
+		<li>Powered by Hexo</li>
+		<li>email:1277244739@qq.com</li>
+		<li>author:郭志翔</li>
+      <!--
+      <li><a href="/">郭志翔</a></li>
+      -->
+    </ul>
+  </div>
+</footer>
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/1.png" alt="白瑞德"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about/">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
