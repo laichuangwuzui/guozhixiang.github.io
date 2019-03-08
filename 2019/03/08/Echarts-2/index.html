@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="代码控 | 爱生活 | 爱摄影">
+  
+  
+    <meta name="description" content="程序猿|爱生活|爱摄影">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Echarts飞行路线图 |
+    
+    白瑞德</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-Echarts-2" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Echarts飞行路线图
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/03/08/Echarts-2/" class="article-date">
+  <time datetime="2019-03-08T01:19:19.000Z" itemprop="datePublished">2019-03-08</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <p> 最近需要引入飞行路线图，在echarts社区找到了相应的案例，并着手进行了尝试，因为中间出现了很多的问题，想在这里记录一下方便后面的学习。<br> <a id="more"></a><br> 这是我们需要进行引入的案例<a href="https://gallery.echartsjs.com/editor.html?c=xSyn_h87Sg" target="_blank" rel="noopener">https://gallery.echartsjs.com/editor.html?c=xSyn_h87Sg</a><br> 效果图<img src="/2019/03/08/Echarts-2/qianxi.png" alt="轨迹图"><br> 我们可以发现引入旅行路线图需要，引入第三方的地图插件world.js或者china.js。<br> 我们可以查看相应的插件<br> <img src="/2019/03/08/Echarts-2/chajian.png" alt="插件"></p>
+<p> 由于我们的项目使用的是angular所以前提是在项目中安装Echarts所需的依赖<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts --save</span><br></pre></td></tr></table></figure></p>
+<p> 在ts文件中导入相应的包<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &apos;../../../../../../node_modules/echarts/map/js/china.js&apos;;</span><br></pre></td></tr></table></figure></p>
+<p> 其他的的使用与官方实例一样，将数据复制到ts文件中，进行调试<br> 我在项目中报了一个严重的错误，<br> <img src="/2019/03/08/Echarts-2/baocuo.jpg" alt="插件"><br> 仔细查看是出现dom异常，中间更改了很多的地方，也没有排查出问题，我的图是需要是通过模态框弹出的方式进行展示的。<br> 当点击查看的时候就开始报错。关闭继续报错，我想的是关闭之后进行刷新页面，这样就就不会继续报错，发现不能实现，<br> 是不是我关闭模态框的时候有东西没有关闭，查看了一下，是我的模态框中，使用了组件，组件中才是多点轨迹图。我关闭模态框的时候，<br> 虽然关闭了模态框，但是组件没有判断是否显示或隐藏，我再想是否是这一方面的问题，尝试在关闭模态框的时候使用*ngIf将模态框中的组件也关闭，<br> 发现就不报错了，<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR DOMException: Failed to execute &apos;drawImage&apos; on &apos;CanvasRenderingContext2D&apos;: </span><br><span class="line">The image argument is a canvas element with a width or height of 0.</span><br></pre></td></tr></table></figure></p>
+<p> 这里报错，虽然是绘图相关的对象报错，很容易造成混淆<br> 最后实现的效果<br> <img src="/2019/03/08/Echarts-2/xiaoguo.jpg" alt="效果图"><br> 最后echart图形使用非常的方便，在数据可视化方面作用非常强大，值得学习。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/08/Echarts-2/" data-id="cjszdgyli00021guciy8tmx76" class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Echarts/">Echarts</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/03/02/Angular6/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">Angular6学习笔记</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2019 白瑞德</li>
+		<li>Powered by Hexo</li>
+		<li>email:1277244739@qq.com</li>
+		<li>author:郭志翔</li>
+      <!--
+      <li><a href="/">郭志翔</a></li>
+      -->
+    </ul>
+  </div>
+</footer>
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/1.png" alt="白瑞德"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about/">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
