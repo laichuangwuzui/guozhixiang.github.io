@@ -55,7 +55,7 @@
       
       
       
-        <p><strong>1.栈(后进先出)方法：push()和pop()</strong><br>push()方法可以接收任意的参数，把他们逐个添加到数组的末尾，并返回修改后数组的长度；<br>pop()方法则是从数组末尾移除最后一项，减少数组的length值，然后返回移；<br>push()和pop()方法都是数组默认的方法；</p>
+        <p><strong>1.栈(后进先出)方法：push()和pop()</strong><br>push()方法可以接收任意的参数，把他们逐个添加到数组的末尾，并返回修改后数组的长度；<br>pop()方法则是从数组末尾移除最后一项，减少数组的length值，然后返回移除值；<br>push()和pop()方法都是数组默认的方法；</p>
 <a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var colors = new Array();		//创建了一个数组</span><br><span class="line">var count = colors.push(&quot;red&quot;,&quot;green&quot;);	//推入两项</span><br><span class="line">alert(count);	//2	</span><br><span class="line"></span><br><span class="line">count = colors.push(&quot;black&quot;); 		// 推入另一项</span><br><span class="line">alert(count); 		//3 </span><br><span class="line"></span><br><span class="line">var item = colors.pop(); 		// 取得最后一项</span><br><span class="line">alert(item); //&quot;black&quot; </span><br><span class="line">alert(colors.length); 		//2</span><br></pre></td></tr></table></figure>
 <p><strong>2.队列(先进先出)方法：shift()和unshift()</strong><br>shift()方法可以将数组中的第一项进行移除，并且返回该项，数组长度减1；<br>unshift()方法可以在数组的前端添加任意个项并返回新数组的长度；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var colors = new Array();	//创建了一个数组</span><br><span class="line">var count = colors.push(&quot;red&quot;,&quot;green&quot;);		//推入两项</span><br><span class="line">alert(count);	//2</span><br><span class="line"></span><br><span class="line">count = colors.push(&quot;black&quot;);	//推入一项</span><br><span class="line">alert(count);	//3</span><br><span class="line"></span><br><span class="line">var items = colors.shift();		//取得第一项(数组的首项)</span><br><span class="line">alert(item);	//&quot;red&quot;</span><br><span class="line">alert(colors.length);		//2</span><br></pre></td></tr></table></figure></p>
@@ -70,7 +70,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/28/javascript-1/" data-id="cjszdgyln00051gucuue1ng4h" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2019/01/28/javascript-1/" data-id="cjys13vds0008wsuc0oft1vr6" class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Array/">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaScript/">javaScript</a></li></ul>
 
