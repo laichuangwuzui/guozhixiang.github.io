@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="代码控 | 爱生活 | 爱摄影">
+  
+  
+    <meta name="description" content="程序猿|爱生活|爱摄影">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    vue中this.$nextTick的使用 |
+    
+    白瑞德</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-vue-01" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue中this.$nextTick的使用
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/09/27/vue-01/" class="article-date">
+  <time datetime="2019-09-27T04:16:21.000Z" itemprop="datePublished">2019-09-27</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <h2 id="vue工程中使用this-nextTick禁止输入异常字符"><a href="#vue工程中使用this-nextTick禁止输入异常字符" class="headerlink" title="vue工程中使用this.$nextTick禁止输入异常字符"></a>vue工程中使用this.$nextTick禁止输入异常字符</h2><p>在开发项目的时候需要进行表单的验证，输入框的校验等等，可以通过vue中的watch对象，以及this.$nextTick的回调，和正则表达式的配合既可以实现禁止的效果下面是一个实际案例。<br><a id="more"></a><br>在进行实际案例之前顺便进行巩固一下vue的一些小的知识点</p>
+<h3 id="watch响应数据变化"><a href="#watch响应数据变化" class="headerlink" title="watch响应数据变化"></a>watch响应数据变化</h3><p>1.watch常用用法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; v-model=&quot;userPhone&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  el: &apos;#root&apos;,</span><br><span class="line">  data: &#123;</span><br><span class="line">    userPhone: &apos;&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    userPhone(value) &#123; // 可以直接写方法</span><br><span class="line">      // ...</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>另外一种写法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  el: &apos;#root&apos;,</span><br><span class="line">  data: &#123;</span><br><span class="line">    userPhone: &apos;&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    userPhone：&apos;checkPhone&apos; // 后面可以直接写一个方法名称</span><br><span class="line">  &#125; </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>当监听到userPhone的值变化的时候，就可以触发相应的方法</p>
+<h3 id="vue中的nextTick"><a href="#vue中的nextTick" class="headerlink" title="vue中的nextTick"></a>vue中的nextTick</h3><p>Vue中的nextTick涉及到Dom的异步更新行为,当前页面的数据是伴随着dom的更新而渲染上去的，如果是单纯的修改双向绑定数据，dom上的数据并不是马上更新的。<br>nextTick的主要使用场景：<br>1.在vue中created()函数中进行dom的操作，一定要放在mounted钩子函数中或者Vue.nextTick()回调函数中。<br>2.在数据变化后要执行的某个操作，这个操作需要使用随数据改变的DOM结构的时候，这个操作都应该放到Vue.nextTick()的回调函数中。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/27/vue-01/" data-id="ck12w4n6g000gd8ucm4fciycx" class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-前端开发/">vue 前端开发</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/03/08/Echarts-2/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">Echarts飞行路线图</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2019 白瑞德</li>
+		<li>Powered by Hexo</li>
+		<li>email:1277244739@qq.com</li>
+		<li>author:郭志翔</li>
+      <!--
+      <li><a href="/">郭志翔</a></li>
+      -->
+    </ul>
+  </div>
+</footer>
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/1.png" alt="白瑞德"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about/">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
