@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="代码控 | 爱生活 | 爱摄影">
+  
+  
+    <meta name="description" content="程序猿|爱生活|爱摄影">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    iconFont在项目中的使用 |
+    
+    白瑞德</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-iconFontBolg" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iconFont在项目中的使用
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/09/30/iconFontBolg/" class="article-date">
+  <time datetime="2019-09-30T09:08:48.000Z" itemprop="datePublished">2019-09-30</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <h2 id="iconfont在项目中的使用"><a href="#iconfont在项目中的使用" class="headerlink" title="iconfont在项目中的使用"></a>iconfont在项目中的使用</h2><p>在实际的项目开发中需要使用各种类型的图标，阿里巴巴图标库iconfont是一个出色的图标库，在这里记录一下iconfont的具体使用<br><a id="more"></a></p>
+<h3 id="在iconfont站点选择自己喜欢的图标"><a href="#在iconfont站点选择自己喜欢的图标" class="headerlink" title="在iconfont站点选择自己喜欢的图标"></a>在iconfont站点选择自己喜欢的图标</h3><p>将需要的图标放入自己的购物车中</p>
+<h3 id="在购物车中已代码下载的方式下载图标"><a href="#在购物车中已代码下载的方式下载图标" class="headerlink" title="在购物车中已代码下载的方式下载图标"></a>在购物车中已代码下载的方式下载图标</h3><p>将下载好的文件引入到项目中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import &apos;./assets/font_qivc8s28qw/iconfont.css&apos;</span><br><span class="line">import &apos;./assets/font_qivc8s28qw/iconfont.eot&apos;</span><br><span class="line">import &apos;./assets/font_qivc8s28qw/iconfont.ttf&apos;</span><br><span class="line">import &apos;./assets/font_qivc8s28qw/iconfont.svg&apos;</span><br></pre></td></tr></table></figure></p>
+<p>以上主要使用的是四个文件，将这四个文件引入项目中即可</p>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><p>你可以打开下载的html的demo文件，中可以查看相应的引入方式</p>
+<p>方式一：Unicode 引用<br>Unicode 是字体在网页端最原始的应用方式，特点是：</p>
+<p>兼容性最好，支持 IE6+，及所有现代浏览器。<br>支持按字体的方式去动态调整图标大小，颜色等等。<br>但是因为是字体，所以不支持多色。只能使用平台里单色的图标，就算项目里有多色图标也会自动去色。<br>找到demo中的unicode代码此时直接在页面中引用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span class=&quot;iconfont&quot;&gt;&amp;#x33;&lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
+<p>方式二：font-class 引用<br>font-class 是 Unicode 使用方式的一种变种，主要是解决 Unicode 书写不直观，语意不明确的问题。</p>
+<p>与 Unicode 使用方式相比，具有如下特点：</p>
+<p>兼容性良好，支持 IE8+，及所有现代浏览器。<br>相比于 Unicode 语意明确，书写更直观。可以很容易分辨这个 icon 是什么。<br>因为使用 class 来定义图标，所以当要替换图标时，只需要修改 class 里面的 Unicode 引用。<br>不过因为本质上还是使用的字体，所以多色图标还是不支持的。</p>
+<p>在引入了上面说明的四个文件基础下,找到demo中的class类名直接在页面中引用即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span class=&quot;iconfont icon-xxx&quot;&gt;&lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
+<p>第三种方式没有使用过，就不再次介绍</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/30/iconFontBolg/" data-id="ck167m952000364ucp01wn1bo" class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iconfont-web/">iconfont web</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/09/27/vue-01/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">vue中this.$nextTick的使用</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2019 白瑞德</li>
+		<li>Powered by Hexo</li>
+		<li>email:1277244739@qq.com</li>
+		<li>author:郭志翔</li>
+      <!--
+      <li><a href="/">郭志翔</a></li>
+      -->
+    </ul>
+  </div>
+</footer>
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/1.png" alt="白瑞德"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about/">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
